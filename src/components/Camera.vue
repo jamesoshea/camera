@@ -34,11 +34,15 @@ export default {
   methods: {
     takePhoto() {
         const mediaStreamTrack = this.mediaStream.getVideoTracks()[0]
-        const imageCapture = new window.ImageCapture(mediaStreamTrack)
+				const imageCapture = new window.ImageCapture(mediaStreamTrack)
+				this.$refs.video.pause()
         return imageCapture.takePhoto().then(blob => {
 					let fileName = `picture-${new Date().getTime()}`
           storage.ref().child(`images/${fileName}`).put(blob)
-            .then(res => console.log(res))
+            .then((res) => {
+							this.$store.commit('addFileName',fileName)
+							this.$router.push('/gallery')
+							})
         })
     }
   }

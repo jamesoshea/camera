@@ -13,7 +13,12 @@ export default {
 		fileNames: 'Array',
 	},
 	mounted () {
-		this.photos = storage.ref().child('images')
+		storage.ref().child('images')
+	},
+	computed: {
+		fileNames() {
+			return this.$store.getters.fileNames
+		}
 	},
 	data() {
 		return {
