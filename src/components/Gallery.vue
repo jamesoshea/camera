@@ -9,8 +9,11 @@
 import { storage } from './../config/firebase'
 
 export default {
+	props: {
+		fileNames: 'Array',
+	},
 	mounted () {
-		this.data = storage.ref().child(`images`)
+		this.photos = storage.ref().child('images')
 	},
 	data() {
 		return {

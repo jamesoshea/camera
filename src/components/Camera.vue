@@ -16,7 +16,7 @@
 import { storage } from './../config/firebase'
 
 export default {
-  name: 'app',
+	name: 'app',
   mounted () {
     navigator.mediaDevices.getUserMedia({ video: true })
       .then(mediaStream => {
@@ -36,7 +36,8 @@ export default {
         const mediaStreamTrack = this.mediaStream.getVideoTracks()[0]
         const imageCapture = new window.ImageCapture(mediaStreamTrack)
         return imageCapture.takePhoto().then(blob => {
-          storage.ref().child(`images/picture-${new Date().getTime()}`).put(blob)
+					let fileName = `picture-${new Date().getTime()}`
+          storage.ref().child(`images/${fileName}`).put(blob)
             .then(res => console.log(res))
         })
     }
