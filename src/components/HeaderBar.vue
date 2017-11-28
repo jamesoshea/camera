@@ -1,15 +1,16 @@
 <template>
 	<div class="container">
-		<div class="column number1">
+		<div class="column number1" @click="$router.push('/')">
 			<p>Camera</p>
 		</div>
-		<div class="column number2">
+		<div class="column number2" @click="$router.push('/gallery')">
 			<p>Gallery</p>
 		</div>
 	</div>
 </template>
 
 <script>
+
 export default {
 	name: 'HeaderBar',
 	data() {
