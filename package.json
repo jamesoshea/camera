@@ -13,7 +13,8 @@
     "firebase": "^4.6.2",
     "mdi": "^2.0.46",
     "vue": "^2.4.4",
-    "vue-material-design-icons": "^0.7.1"
+    "vue-material-design-icons": "^0.7.1",
+    "vue-router": "^3.0.1"
   },
   "browserslist": [
     "> 1%",
