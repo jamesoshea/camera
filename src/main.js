@@ -26,8 +26,15 @@ const store = new Vuex.Store({
     }
   },
   mutations: {
-    addFileName (state, fileName) {
+    addFileName(state, fileName) {
       state.fileNames.push(fileName)
+      localStorage.setItem('fileNames', JSON.stringify(state.fileNames))
+    },
+    setFileNames(state, fileNames) {
+      state.fileNames = fileNames
+    },
+    setNewFileNameArray(state) {
+      state.fileNames = []
     }
   }
 })

@@ -1,6 +1,8 @@
 <template>
 	<ul>
-		<li v-for="photo in photos"></li>
+		<li v-for="fileName in fileNames" :key="fileName">
+			{{ fileName }}
+		</li>
 	</ul>
 </template>
 
@@ -9,11 +11,10 @@
 import { storage } from './../config/firebase'
 
 export default {
-	props: {
-		fileNames: 'Array',
-	},
 	mounted () {
-		storage.ref().child('images')
+		this.fileNames.forEach((fileName) => {
+			console.log(storage.ref().child(`images/${fileName}`).fullPath)
+		})
 	},
 	computed: {
 		fileNames() {

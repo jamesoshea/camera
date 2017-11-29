@@ -40,7 +40,7 @@ export default {
 					let fileName = `picture-${new Date().getTime()}`
           storage.ref().child(`images/${fileName}`).put(blob)
             .then((res) => {
-							this.$store.commit('addFileName',fileName)
+							this.$store.commit('addFileName', fileName)
 							this.$router.push('/gallery')
 							})
         })
