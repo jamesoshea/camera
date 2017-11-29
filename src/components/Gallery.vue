@@ -1,7 +1,9 @@
 <template>
-	<ul>
-		<li v-for="fileName in fileNames" :key="fileName">
-			{{ fileName }}
+	<ul class="mainList">
+		<li v-for="srcUrl in photos" :key="srcUrl">
+			<div>
+				<img class="main" :src="srcUrl"/>
+			</div>
 		</li>
 	</ul>
 </template>
@@ -13,7 +15,8 @@ import { storage } from './../config/firebase'
 export default {
 	mounted () {
 		this.fileNames.forEach((fileName) => {
-			console.log(storage.ref().child(`images/${fileName}`).fullPath)
+			storage.ref().child(`images/${fileName}`).getDownloadURL()
+				.then(url => this.photos.push(url))
 		})
 	},
 	computed: {
@@ -30,5 +33,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.mainList {
+	list-style: none;
+}
 
 </style>

@@ -22,7 +22,7 @@ const store = new Vuex.Store({
   },
   getters: {
     fileNames(state) {
-      return state.fileNames
+      return state.fileNames.slice().sort((a, b) => a - b)
     }
   },
   mutations: {
