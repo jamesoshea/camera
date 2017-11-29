@@ -26,6 +26,9 @@ export default {
       })
       .catch(error => document.querySelector('#errorer').innerHTML =  error)
   },
+  destroyed() {
+    this.mediaStream.getVideoTracks()[0].stop()
+  },
   data () {
     return {
       mediaStream: null,
