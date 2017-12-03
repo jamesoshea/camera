@@ -1,9 +1,9 @@
 <template>
-	<ul class="mainList">
+	<ul class="main-list">
 		<li v-for="srcUrl in photos" :key="srcUrl">
-			<div class="galleryContainer">
-				<img class="galleryImage" :src="srcUrl"/>
-				<div class="galleryCaption">cunt</div>
+			<div class="gallery-container">
+				<img class="gallery-image" :src="srcUrl"/>
+				<div class="gallery-caption">cunt</div>
 			</div>
 		</li>
 	</ul>
@@ -35,27 +35,36 @@ export default {
 
 <style lang="scss" scoped>
 
-.galleryCaption {
-	margin: 0;
-	height: 15%;
-	background-color: #000;
-	top: 85%;
-	opacity: 0.2;
-	z-index: 1;
-	color: #FFF;
-}
+@import './../assets/variables.scss';
 
-.galleryContainer {
-	margin: 0;
-	width: 80vw;
-}
-
-.galleryImage {
-	width: 80vw;
-}
-
-.mainList {
+.main-list {
 	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.gallery-container {
+	position: relative;
+	margin: 0;
+	width: 100vw;
+}
+
+.gallery-caption {
+	position: absolute;
+	top: 90%;
+  min-width: 100%;
+  min-height: 10%;
+  background-color: $dark-color;
+  opacity: 0.3;
+  display: inline;
+  z-index: 10;
+  text-align: center;
+  color: $light-color;
+	font-size: 2em;
+}
+
+.gallery-image {
+	width: 100vw;
 }
 
 </style>
