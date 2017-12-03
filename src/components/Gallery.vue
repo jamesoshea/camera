@@ -56,9 +56,9 @@ export default {
 
 .gallery-caption {
 	position: absolute;
-	top: 89%;
+	top: 75%;
   width: 100%;
-  min-height: 10%;
+  height: 8vh;
   background-color: $dark-color;
   opacity: 0.3;
   z-index: 10;
