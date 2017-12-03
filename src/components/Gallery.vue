@@ -11,7 +11,7 @@
 
 <script>
 
-import { storage } from './../config/firebase'
+import { storage } from './../services/firebase'
 
 export default {
 	mounted () {
