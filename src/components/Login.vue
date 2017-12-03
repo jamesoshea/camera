@@ -18,13 +18,14 @@ export default {
 	},
 	methods: {
 		login() {
-			auth.signInWithEmailAndPassword(this.email, this.password).catch(function(error) {
-				if (error) {
-					console.log(error.code)
-					console.log(error.message)
-				} else {
-					this.$router.push('/camera')
-				}
+			const self = this
+			auth.signInWithEmailAndPassword(this.email, this.password)
+			.then(() => {
+				this.$router.push('/')
+			})
+			.catch((error) => {
+				console.log(error.code)
+				console.log(error.message)
 			});
 		}
 	}
