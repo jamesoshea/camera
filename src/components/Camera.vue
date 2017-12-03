@@ -19,6 +19,7 @@
 
 <script>
 import { storage } from './../services/firebase'
+import { database } from './../services/firebase'
 
 export default {
 	name: 'app',
@@ -52,12 +53,16 @@ export default {
         this.$refs.video.pause()
         this.showOverlay = true
         return imageCapture.takePhoto().then(blob => {
-					let fileName = `picture-${new Date().getTime()}`
-          storage.ref().child(`images/${this.uuid}/${fileName}`).put(blob)
+          let fileName = `picture-${new Date().getTime()}`
+          const newRef = database.ref().child(this.uuid).push()
+          newRef.set(fileName)
             .then((res) => {
-              this.showOverlay = false;
-							this.$router.push('/gallery')
-							})
+              storage.ref().child(`images/${this.uuid}/${fileName}`).put(blob)
+                .then((res) => {
+                  this.showOverlay = false;
+                  this.$router.push('/gallery')
+                })
+            })
         })
     }
   }

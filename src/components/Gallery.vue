@@ -12,21 +12,27 @@
 <script>
 
 import { storage } from './../services/firebase'
+import { database } from './../services/firebase'
 
 export default {
 	mounted () {
-		// this.fileNames.forEach((fileName) => {
-		// 	storage.ref().child(`images/${uuid}/${fileName}`).getDownloadURL()
-		// 		.then(url => this.photos.push(url))
-		// })
+		database.ref().child(this.uuid).on('value', (snapshot) => {
+			// firebase is gross lol
+			this.fileNames = Object.entries(snapshot.val()).map((e) => e[1])
+		})
+		this.fileNames.forEach((fileName) => {
+			storage.ref(`images/${this.uuid}/${fileName}`).getDownloadURL()
+				.then(url => this.photos.push(url))
+		})
 	},
 	computed: {
-		fileNames() {
-			return this.$store.getters.fileNames
-		}
+		uuid() {
+			return this.$store.getters.uuid
+		},
 	},
 	data() {
 		return {
+			fileNames: [],
 			photos: [],
 		}
 	}
