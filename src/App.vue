@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <headerBar />
-    <router-view></router-view>
+    <router-view />
   </div>
 </template>
 
@@ -21,6 +21,7 @@ export default {
         self.$store.commit('setUser', user)
       } else {
         self.$store.commit('setUser', null)
+        self.$router.push('/login')
       }
     }); 
   }

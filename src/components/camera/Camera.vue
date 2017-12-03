@@ -25,11 +25,6 @@ export default {
     CameraButton,
     SendButton
   },
-  beforeCreate() {
-    if (!auth.currentUser) {
-      this.$router.push('/login')  
-    }
-  },
   mounted () {
     navigator.mediaDevices.getUserMedia({ video: true })
       .then(mediaStream => {

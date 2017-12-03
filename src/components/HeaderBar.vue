@@ -77,8 +77,9 @@ export default {
 	grid-column-start: 3;
 }
 
-h1 {
-  text-align: center;
+p {
+	text-align: center;
+	cursor: pointer;
 }
 
 </style>
