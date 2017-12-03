@@ -1,15 +1,18 @@
 <template>
-	<div>
-		<input type="text" v-model="email"/>
-		<input type="password" v-model="password"/>
-		<button @click="login">login</button>	
-	</div>
+	<AuthForm
+		:buttonText="'Login'"
+		:buttonFunction="login"
+	/>
 </template>
 
 <script>
 import { auth } from './../services/firebase'
+import AuthForm from './AuthForm'
 
 export default {
+	components: {
+		AuthForm
+	},
 	data() {
 		return {
 			email: '',
@@ -17,8 +20,8 @@ export default {
 		}
 	},
 	methods: {
-		login() {
-			auth.signInWithEmailAndPassword(this.email, this.password)
+		login(email, password) {
+			auth.signInWithEmailAndPassword(email, password)
 			.then(() => {
 				this.$router.push('/')
 			})	
@@ -33,7 +36,10 @@ export default {
 
 <style lang="scss">
 
-button {
-	color: #000;
+@import './../assets/variables.scss';
+
+body {
+	background-color: $dark-color;
 }
+
 </style>

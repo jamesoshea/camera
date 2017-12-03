@@ -1,15 +1,18 @@
 <template>
-	<div>
-		<input type="text" v-model="email"/>
-		<input type="password" v-model="password"/>
-		<button @click="register">REGISTER</button>	
-	</div>
+	<AuthForm
+		:buttonText="'Sign up'"
+		:buttonFunction="register"
+	/>
 </template>
 
 <script>
 import { auth } from './../services/firebase'
+import AuthForm from './AuthForm'
 
 export default {
+	components: {
+		AuthForm
+	},
 	data() {
 		return {
 			email: '',
@@ -17,10 +20,10 @@ export default {
 		}
 	},
 	methods: {
-		register() {
-			auth.createUserWithEmailAndPassword(this.email, this.password)
+		register(email, password) {
+			auth.createUserWithEmailAndPassword(email, password)
 			.then(() => {
-				auth.signInWithEmailAndPassword(this.email, this.password)
+				auth.signInWithEmailAndPassword(email, password)
 				this.$router.push('/')
 			})
 			.catch((error) => {
@@ -31,10 +34,3 @@ export default {
 	}
 }
 </script>
-
-<style lang="scss">
-
-button {
-	color: #000;
-}
-</style>

@@ -34,6 +34,8 @@ export default {
 
 #app {
   font-family: $standard-font;
+  background-color: $dark-color;
+  min-height: 100vh;
 }
 
 </style>
