@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Camera from './../components/Camera'
+import Camera from './../components/camera/Camera'
 import Gallery from './../components/Gallery'
 import Login from './../components/Login'
 import Register from './../components/Register'
