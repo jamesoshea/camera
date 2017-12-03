@@ -1,9 +1,9 @@
 <template>
 	<ul class="main-list">
-		<li v-for="srcUrl in photos" :key="srcUrl">
+		<li v-for="photo in photos" :key="photo.fileName">
 			<div class="gallery-container">
-				<img class="gallery-image" :src="srcUrl"/>
-				<div class="gallery-caption">cunt</div>
+				<img class="gallery-image" :src="photo.fileName"/>
+				<div class="gallery-caption">{{ photo.caption }}</div>
 			</div>
 		</li>
 	</ul>
@@ -16,13 +16,18 @@ import { database } from './../services/firebase'
 
 export default {
 	mounted () {
+		const self = this
 		database.ref().child(this.userId).on('value', (snapshot) => {
+			if(snapshot.exists()) {
 			// firebase is gross lol
-			this.fileNames = Object.entries(snapshot.val()).map((e) => e[1])
-			this.fileNames.forEach((fileName) => {
-				storage.ref(`images/${this.userId}/${fileName}`).getDownloadURL()
-				.then(url => this.photos.push(url))
-			})
+				self.photoRefs = Object.entries(snapshot.val()).map((e) => e[1])
+				self.photoRefs.forEach((photo) => {
+					storage.ref(`images/${self.userId}/${photo.fileName}`).getDownloadURL()
+					.then((url) => {
+						self.photos.push({ fileName: url, caption: photo.caption })
+					})
+				})
+			}
 		})
 	},
 	computed: {
@@ -32,8 +37,9 @@ export default {
 	},
 	data() {
 		return {
-			fileNames: [],
+			photoRefs: [],
 			photos: [],
+			captions: []
 		}
 	}
 }
