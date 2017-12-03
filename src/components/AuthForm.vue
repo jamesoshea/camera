@@ -1,6 +1,8 @@
 <template>
 		<div class="container">
+		<h3>email</h3>
 		<input class="form auth-input" type="text" v-model="email"/>
+		<h3>password</h3>
 		<input class="form auth-input" type="password" v-model="password"/>
 		<button class="form auth-button" @click="buttonFunction(email, password)">{{ buttonText }}</button>	
 	</div>
@@ -14,6 +16,9 @@ export default {
 		},
 		buttonFunction: {
 			type: Function
+		},
+		placeholder: {
+			type: String
 		}
 	},
 	data() {
@@ -28,6 +33,11 @@ export default {
 <style lang="scss" scoped>
 
 @import './../assets/variables.scss';
+
+h3 {
+	text-align: center;
+	color: $light-color;
+}
 
 .form {
 	border: 1px solid #FFF; 
