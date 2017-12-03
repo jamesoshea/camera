@@ -1,8 +1,8 @@
 <template>
 	<ul class="main-list">
-		<li v-for="photo in photos" :key="photo.fileName">
+		<li v-for="photo in sortedPhotos" :key="photo.fileName">
 			<div class="gallery-container">
-				<img class="gallery-image" :src="photo.fileName"/>
+				<img class="gallery-image" :src="photo.url"/>
 				<div class="gallery-caption">{{ photo.caption }}</div>
 			</div>
 		</li>
@@ -24,7 +24,11 @@ export default {
 				self.photoRefs.forEach((photo) => {
 					storage.ref(`images/${self.userId}/${photo.fileName}`).getDownloadURL()
 					.then((url) => {
-						self.photos.push({ fileName: url, caption: photo.caption })
+						self.photos.push({ 
+							fileName: photo.fileName,
+							url,
+							caption: photo.caption
+						})
 					})
 				})
 			}
@@ -34,12 +38,16 @@ export default {
 		userId() {
 			return this.$store.getters.id
 		},
+		sortedPhotos() {
+			return this.photos.sort((a, b) => {
+				return b.fileName.slice(8, b.fileName.length) - a.fileName.slice(8, a.fileName.length)
+			})
+		}
 	},
 	data() {
 		return {
 			photoRefs: [],
 			photos: [],
-			captions: []
 		}
 	}
 }
