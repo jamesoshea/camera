@@ -15,10 +15,10 @@ import { storage } from './../services/firebase'
 
 export default {
 	mounted () {
-		this.fileNames.forEach((fileName) => {
-			storage.ref().child(`images/${fileName}`).getDownloadURL()
-				.then(url => this.photos.push(url))
-		})
+		// this.fileNames.forEach((fileName) => {
+		// 	storage.ref().child(`images/${uuid}/${fileName}`).getDownloadURL()
+		// 		.then(url => this.photos.push(url))
+		// })
 	},
 	computed: {
 		fileNames() {
@@ -45,21 +45,19 @@ export default {
 
 .gallery-container {
 	position: relative;
-	margin: 0;
 	width: 100vw;
 }
 
 .gallery-caption {
 	position: absolute;
-	top: 90%;
-  min-width: 100%;
+	top: 89%;
+  width: 100%;
   min-height: 10%;
   background-color: $dark-color;
   opacity: 0.3;
-  display: inline;
   z-index: 10;
   text-align: center;
-  color: $light-color;
+  color: #FFF;
 	font-size: 2em;
 }
 

@@ -41,10 +41,8 @@ export default {
     }
   },
   computed: {
-    overlayClasses() {
-      return {
-        
-      }
+    uuid() {
+      return this.$store.getters.uuid
     }
   },
   methods: {
@@ -55,9 +53,8 @@ export default {
         this.showOverlay = true
         return imageCapture.takePhoto().then(blob => {
 					let fileName = `picture-${new Date().getTime()}`
-          storage.ref().child(`images/${fileName}`).put(blob)
+          storage.ref().child(`images/${this.uuid}/${fileName}`).put(blob)
             .then((res) => {
-              this.$store.commit('addFileName', fileName)
               this.showOverlay = false;
 							this.$router.push('/gallery')
 							})
