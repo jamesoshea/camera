@@ -7,6 +7,7 @@ const store = new Vuex.Store({
   state: {
     fileNames: [],
     user: null,
+    message: ''
   },
   getters: {
     id(state) {
@@ -15,6 +16,9 @@ const store = new Vuex.Store({
     }
   },
   mutations: {
+    setMessage(state, message) {
+      state.message = message
+    },
     setUser(state, user) {
       state.user = user
     },

@@ -31,6 +31,8 @@ export default {
 						})
 					})
 				})
+			} else {
+				this.$store.commit('setMessage', 'You haven\'t taken any pictures yet.')
 			}
 		})
 	},
@@ -78,7 +80,7 @@ export default {
   z-index: 10;
   text-align: center;
   color: $dark-color;
-	font-size: 2em;
+	font-size: 4vh;
 }
 
 .gallery-image {

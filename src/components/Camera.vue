@@ -130,8 +130,14 @@ export default {
 	font-family: $standard-font;
 	display: block;
 	margin: auto;
-	margin-top: 2vh;
-	color: $dark-color;
-	background-color: $light-color;
+  margin-top: 2vh;
+  border: 0;
+	color: $light-color;
+  background-color: $dark-color;
+  opacity: 0.3;
+  width: 100%;
+  text-align: center;
+  height: 8vh;
+  font-size: 4vh;
 }
 </style>
