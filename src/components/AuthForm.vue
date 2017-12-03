@@ -40,14 +40,17 @@ h3 {
 }
 
 .form {
-	border: 1px solid $accent-color; 
-	border-radius: 5px;
 	font-family: $standard-font;
 	display: block;
 	margin: auto;
-	margin-top: 2vh;
-	color: $dark-color;
-	background-color: $light-color;
+  margin-top: 2vh;
+  border: 0;
+  background-color: $dark-color;
+  opacity: 0.3;
+  width: 100%;
+  text-align: center;
+  height: 8vh;
+  font-size: 4vh;
 }
 
 input:focus {
@@ -56,11 +59,14 @@ input:focus {
 }
 
 .auth-input {
-	width: 80vw;
+	width: 100vw;
+	color: $light-color;
 }
 
 .auth-button {
 	width: 40vw;
+	background-color: $light-color;
+	color: $dark-color;
 }
 
 </style>

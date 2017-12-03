@@ -25,11 +25,17 @@
 </template>
 
 <script>
+import { auth } from './../services/firebase'
 import { storage } from './../services/firebase'
 import { database } from './../services/firebase'
 
 export default {
-	name: 'camera',
+  name: 'camera',
+  beforeCreate() {
+    if (!auth.currentUser) {
+      this.$router.push('/login')  
+    }
+  },
   mounted () {
     navigator.mediaDevices.getUserMedia({ video: true })
       .then(mediaStream => {
@@ -37,10 +43,10 @@ export default {
         this.$refs.video.srcObject = mediaStream
         this.$refs.video.play()
       })
-      .catch(error => document.querySelector('#errorer').innerHTML =  error)
+      .catch(error => console.log(error))
   },
   destroyed() {
-    this.mediaStream.getVideoTracks()[0].stop()
+    if(this.mediaStream) this.mediaStream.getVideoTracks()[0].stop()
   },
   data () {
     return {

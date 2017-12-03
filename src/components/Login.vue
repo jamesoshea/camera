@@ -44,12 +44,13 @@ export default {
 @import './../assets/variables.scss';
 
 a {
-	color: $light-color;
+	color: $dark-color;
 }
 
 .signup-link {
 	margin-top: 5vh;
 	text-align: center;
+	color: $dark-color;
 }
 
 </style>

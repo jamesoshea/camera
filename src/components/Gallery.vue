@@ -71,6 +71,7 @@ export default {
 }
 
 .gallery-caption {
+	padding-top: 2vh;
 	position: absolute;
 	top: 75%;
   width: 100%;
