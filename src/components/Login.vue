@@ -18,11 +18,10 @@ export default {
 	},
 	methods: {
 		login() {
-			const self = this
 			auth.signInWithEmailAndPassword(this.email, this.password)
 			.then(() => {
 				this.$router.push('/')
-			})
+			})	
 			.catch((error) => {
 				console.log(error.code)
 				console.log(error.message)

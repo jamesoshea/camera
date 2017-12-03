@@ -18,13 +18,14 @@ export default {
 	},
 	methods: {
 		register() {
-			auth.createUserWithEmailAndPassword(this.email, this.password).catch(function(error) {
-				if (error) {
-					console.log(error.code)
-					console.log(error.message)
-				} else {
-					this.$router.push('/login')
-				}
+			auth.createUserWithEmailAndPassword(this.email, this.password)
+			.then(() => {
+				auth.signInWithEmailAndPassword(this.email, this.password)
+				this.$router.push('/')
+			})
+			.catch((error) => {
+				console.log(error.code)
+				console.log(error.message)
 			});
 		}
 	}
