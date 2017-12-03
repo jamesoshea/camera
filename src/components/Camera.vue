@@ -42,8 +42,8 @@ export default {
     }
   },
   computed: {
-    uuid() {
-      return this.$store.getters.uuid
+    userId() {
+      return this.$store.getters.id
     }
   },
   methods: {
@@ -54,10 +54,10 @@ export default {
         this.showOverlay = true
         return imageCapture.takePhoto().then(blob => {
           let fileName = `picture-${new Date().getTime()}`
-          const newRef = database.ref().child(this.uuid).push()
+          const newRef = database.ref().child(this.userId).push()
           newRef.set(fileName)
             .then((res) => {
-              storage.ref().child(`images/${this.uuid}/${fileName}`).put(blob)
+              storage.ref().child(`images/${this.userId}/${fileName}`).put(blob)
                 .then((res) => {
                   this.showOverlay = false;
                   this.$router.push('/gallery')

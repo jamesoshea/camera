@@ -6,21 +6,23 @@
 </template>
 
 <script>
+import { auth } from './services/firebase'
+
 import HeaderBar from './components/HeaderBar.vue'
-import uuid from 'uuid/v1'
 
 export default {
   components: {
     HeaderBar,
   },
   mounted() {
-    if (localStorage.getItem('uuid') == null) {
-      const newUUID = uuid()
-      localStorage.setItem('uuid', newUUID)
-      this.$store.commit('setUUID', newUUID)
-    } else {
-      this.$store.commit('setUUID', localStorage.getItem('uuid'))
-    }
+    const self = this
+    auth.onAuthStateChanged(function(user) {
+      if (user) {
+        self.$store.commit('setUser', user)
+      } else {
+        self.$store.commit('setUser', null)
+      }
+    }); 
   }
 }
 

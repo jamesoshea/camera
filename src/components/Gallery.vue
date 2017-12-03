@@ -16,18 +16,18 @@ import { database } from './../services/firebase'
 
 export default {
 	mounted () {
-		database.ref().child(this.uuid).on('value', (snapshot) => {
+		database.ref().child(this.userId).on('value', (snapshot) => {
 			// firebase is gross lol
 			this.fileNames = Object.entries(snapshot.val()).map((e) => e[1])
-		})
-		this.fileNames.forEach((fileName) => {
-			storage.ref(`images/${this.uuid}/${fileName}`).getDownloadURL()
+			this.fileNames.forEach((fileName) => {
+				storage.ref(`images/${this.userId}/${fileName}`).getDownloadURL()
 				.then(url => this.photos.push(url))
+			})
 		})
 	},
 	computed: {
-		uuid() {
-			return this.$store.getters.uuid
+		userId() {
+			return this.$store.getters.id
 		},
 	},
 	data() {

@@ -6,16 +6,20 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     fileNames: [],
-    uuid: null,
+    user: null,
   },
   getters: {
-    uuid(state) {
-      return state.uuid
+    id(state) {
+      if (state.user) return state.user.uid
+      return null
     }
   },
   mutations: {
-    setUUID(state, uuid) {
-      state.uuid = uuid
+    setUser(state, user) {
+      state.user = user
+    },
+    logout() {
+      state.user = null
     }
   }
 })
