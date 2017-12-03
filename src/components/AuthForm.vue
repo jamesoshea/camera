@@ -36,22 +36,23 @@ export default {
 
 h3 {
 	text-align: center;
-	color: $light-color;
+	color: $dark-color;
 }
 
 .form {
-	border: 1px solid #FFF; 
+	border: 1px solid $accent-color; 
 	border-radius: 5px;
 	font-family: $standard-font;
 	display: block;
 	margin: auto;
 	margin-top: 2vh;
-	color: #FFF;
+	color: $dark-color;
 	background-color: $light-color;
 }
 
-form:focus {
-	border-style: none;
+input:focus {
+	outline: none;
+	border: 1px solid $comp-color;
 }
 
 .auth-input {

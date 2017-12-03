@@ -1,8 +1,13 @@
 <template>
-	<AuthForm
-		:buttonText="'Login'"
-		:buttonFunction="login"
-	/>
+	<div>
+		<AuthForm
+			:buttonText="'Login'"
+			:buttonFunction="login"
+		/>
+		<div class="signup-link">
+			<router-link to="/register">Don't have an account?</router-link>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -34,12 +39,17 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 @import './../assets/variables.scss';
 
-body {
-	background-color: $dark-color;
+a {
+	color: $light-color;
+}
+
+.signup-link {
+	margin-top: 5vh;
+	text-align: center;
 }
 
 </style>

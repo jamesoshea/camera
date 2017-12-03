@@ -59,11 +59,11 @@ export default {
 	top: 75%;
   width: 100%;
   height: 8vh;
-  background-color: $dark-color;
-  opacity: 0.3;
+  background-color: $light-color;
+  opacity: 0.5;
   z-index: 10;
   text-align: center;
-  color: #FFF;
+  color: $dark-color;
 	font-size: 2em;
 }
 

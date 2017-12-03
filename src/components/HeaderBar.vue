@@ -53,8 +53,8 @@ export default {
 
 .container {
 	display: grid;
-	grid-template-columns: 40% 40% 10%;
-	background-color: $light-color;
+	grid-template-columns: 34% 33% 33%;
+	background-color: $accent-color;
 	color: #FFF;
 	margin: 0;
 	font-size: 3vh;

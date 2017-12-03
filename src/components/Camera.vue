@@ -109,7 +109,7 @@ export default {
   width: 10vh;
   height: 10vh;
   border-radius: 5vh;
-  fill: $light-color;
+  fill: $accent-color;
   cursor: pointer;
 }
 </style>
