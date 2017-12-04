@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import { auth } from './../../services/firebase'
 import { storage } from './../../services/firebase'
 import { database } from './../../services/firebase'
@@ -79,6 +80,16 @@ export default {
     },
     savePhoto() {
       const self = this
+      axios.post('/savePhoto', {
+        userData: auth.currentUser,
+        photo: btoa(self.photoBlob)
+      })
+      .then((res) => {
+        console.log(res.msg)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
       const fileName = `picture-${new Date().getTime()}`
       const newRef = database.ref().child(self.userId).push()
       newRef.set({ caption: this.caption, fileName })

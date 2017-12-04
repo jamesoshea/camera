@@ -11,6 +11,8 @@
     "start": "nodemon server/index.js"
   },
   "dependencies": {
+    "axios": "^0.17.1",
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "firebase": "^4.6.2",
     "vue": "^2.4.4",
